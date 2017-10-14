@@ -195,6 +195,7 @@ e.g in List:
        {factory.createDeleteButton()}
     </Datagrid>
 </List>
+```
 
 ### Hide properties
 
@@ -224,8 +225,5 @@ if you want to have tabbed forms or tabbed show layout you add this tab delimite
     </TabbedForm>
 </Create>
 ```    
-```
-    
-```
 this will put inputs name and author in the first Tab and date in the second Tab
 
