@@ -1,20 +1,35 @@
 {
     "name": "aor-component-factory",
-    "authors": [
-        "Michail Michailidis <mmichaelid@gmail.com>"
-      ],
-    "main": "./lib/index.js",
+    "version": "0.1.4",
+    "author": {
+        "name": "Michail Michailidis",
+        "email": "mmichaelid@gmail.com"
+    },
     "repository": "https://github.com/zifnab87/aor-component-factory.git",
-    "version": "0.1.3",
     "private": false,
+    "dependencies": {
+        "react": "^15.5.4",
+        "webpack": "^2.6.1",
+        "admin-on-rest": "1.3.2",
+         "react-dom": "~15.5.4"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack --watch",
+        "build": "webpack"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.24.1",
+        "babel-core": "^6.24.1",
+        "babel-loader": "^7.0.0",
+        "babel-plugin-transform-object-rest-spread": "^6.23.0",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-preset-env": "^1.5.1"
+    },
     "peerDependencies": {
         "admin-on-rest": "1.3.2",
         "react": "15.5.4"
     },
     "homepage": "http://github.com/zifnab87/aor-component-factory",
-    "license": "MIT",
-    "scripts": {
-        "build": "make build",
-        "clean": "make clean"
-    }
+    "license": "MIT"
 }
