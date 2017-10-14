@@ -8,7 +8,7 @@ admin-on-rest component-factory provides a centralized way to easily configure:
 - permissions on visibility/immutability (should a property be visible/ readonly ?)
 - reordering of elements in the views
 - handling of tabbed views/forms
-- (soon) mobile responsive view
+- (soon) mobile responsive view integration
 
 
 
