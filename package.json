@@ -7,8 +7,8 @@
     "private": false,
     "peerDependencies": {
         "admin-on-rest": "1.3.2",
-        "react": "15.5.4",
-    }
+        "react": "15.5.4"
+    },
     "homepage": "http://github.com/zifnab87/aor-component-factory",
     "license": "MIT",
     "scripts": {
