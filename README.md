@@ -59,12 +59,12 @@ export default {
 			input: (<DateInput source="dateLte" parse={dateParser} label="Date to"/>),
 		},
     	author: {
-	    	input: <ReferenceInput label="Staff" source="staff" reference="staff" allowEmpty>
-	               		<SelectInput options={{ listStyle: scrollableAutoComplete}} optionText="name" translate={false}/>
+	    	input: <ReferenceInput label="Author" source="author" reference="authors" allowEmpty>
+	                    <SelectInput options={{ listStyle: scrollableAutoComplete}} optionText="name" translate={false}/>
 	               </ReferenceInput>,
-	      	field:  <ReferenceField label="Staff" source="staff" reference="staff" sortable={false} linkType={false} allowEmpty={true}>
-		            	<ChipField source="name"/>
-		            </ReferenceField>
+	      	field:  <ReferenceField label="Author" source="author" reference="authors" sortable={false} linkType={false} allowEmpty={true}>     
+		            <ChipField source="name"/>
+		        </ReferenceField>
 	    },
 	},
 
