@@ -204,11 +204,11 @@ If you want to hide a property of a resource from list for a secific role (e.g r
 
 ### Readonly properties in Edit Mode:
 
-if you want a property to be readonly in Edit Mode you prefix it with "_" or whatever prefix you have configures `factoryConfig.editReadOnlyStartsWith`
+if you want a property to be readonly in Edit Mode you prefix it with "_" or whatever prefix you have configured at `factoryConfig.editReadOnlyStartsWith`
 
 ### Global Search q 
 
-if you want to have Search in all fields of a property, you just add "q" in the filter
+if you want to have Search in all fields of a resource, you just add "q" in the filter
 
 ### Tabs 
 
