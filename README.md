@@ -4,8 +4,7 @@ admin-on-rest component-factory provides a centralized way to easily configure:
 - permissions on action buttons (should a CreateButton be visible ?)
 - permissions on Forms/Actions (should edit form of a resource be accessible to a user?)
 - permissions on Menu Links (should a Menu Link be visible ?)
-
-- permissions on visibility/immutability (should a property be visible/ readonly ?)
+- permissions on front-end visibility/immutability (should a property be visible / readonly ?)
 - reordering of elements in the views
 - handling of tabbed views/forms
 - (soon) mobile responsive view integration
