@@ -214,6 +214,13 @@ if you want to have Search in all fields of a property, you just add "q" in the 
 if you want to have tabbed forms or tabbed show layout you add this tab delimiter `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property like that (make sure you are consistent about the number of tabs for all roles of the specific action):
 
 ```
+create {
+    props: ["name", "author, "-----TAB-----", "date"],
+    action: true
+}
+```
+
+```
 <Create {...props}>
    <TabbedForm>
        <FormTab label="Sample Tab">
