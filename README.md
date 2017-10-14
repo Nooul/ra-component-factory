@@ -95,21 +95,21 @@ export default {
 		},
 
 	},
-	role1: {
+	role2: {
 		create: {
-			props: ["name", "author],
-			action: true
+			props: [],
+			action: false
 		},
 		edit: {
-			props: ["_id", "name", "author"],
-			action: true
+			props: [],
+			action: false
 		},
 		list: {
-			props: ["id", "name", "author"],
-			action: true
+			props: ["id", "name", "author", "date"],
+			action: false
 		},
 		filter: {
-			props: ["q", "id", "author"],
+			props: ["q", "id", "author", "dateGte", "dateLte"],
 			action: true
 		},
 		show: {
@@ -120,7 +120,7 @@ export default {
 			action: true
 		},
 		delete: {
-			action: true
+			action: false
 		},
 	}
 };
