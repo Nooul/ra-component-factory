@@ -10,9 +10,11 @@ admin-on-rest component-factory provides a centralized way to easily configure:
 - handling of tabbed views/forms
 - (soon) mobile responsive view integration
 
+### Installation:
 
+Add `"aor-component-factory": "0.1.5"` in your package.json and run `npm install`
 
-### Example Usage:
+### Global Config:
 
 Add a global Config like that (e.g config/factoryConfig.js):
 
@@ -28,7 +30,7 @@ export default {
 }
 ```
 
-Add a config for each of the resources you want to use the factory with (e.g config/postsConfig.js) and assuming you have two roles (role1 and role2) in your app and the role of the user is found in the local Storage at `user_role`:
+Add a config for each of the resources you want to use the factory with (e.g config/postsConfig.js). You can have all resources in the same file if you choose so. Assuming you have two roles (role1 and role2) in your app and the role of the user is found in the local Storage at `user_role` it will look like that:
 
 ```
 import React from 'react';
