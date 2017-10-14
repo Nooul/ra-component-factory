@@ -134,7 +134,7 @@ import factoryConfig from './config/factoryConfig';
 const factory = new Factory("posts", factoryConfig);
 ```
 
-### Usage in List, Edit, Filter and Show:
+### Usage in Create, List, Edit, Filter and Show:
 
 Separate fields:
 
