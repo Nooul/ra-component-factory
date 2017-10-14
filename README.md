@@ -211,12 +211,23 @@ if you want to have Search in all fields of a property, you just add "q" in the 
 
 ### Tabs 
 
-if you want to have tabbed forms or tabbed show layout you add this tab delimiter `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property like that (make sure you are consistent about the number of tabs for all roles of the specific action):
+if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property (make sure you are consistent about the number of tabs for all roles of the specific action):
 
 ```
-create {
-    props: ["name", "author, "-----TAB-----", "date"],
-    action: true
+role1: {
+    create: {
+       props: ["name", "author, "-----TAB-----", "date"],
+       action: true
+    },
+    [...]
+}
+
+role2: {
+    create: {
+       props: ["name", "-----TAB-----", "author, "date"],
+       action: true
+    },
+    [...]
 }
 ```
 
@@ -232,5 +243,6 @@ create {
     </TabbedForm>
 </Create>
 ```    
-this will put inputs name and author in the first Tab and date in the second Tab
-
+This will put inputs `name` and `author` in the first `Tab` and `date` in the second `Tab` for `role1` users.
+It will put input `name` in the first `Tab` and `author`,`date` in the second `Tab` for `role2` users.
+ 
