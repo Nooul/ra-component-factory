@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-Add a config for each of the resources you want to use the factory with (e.g config/postsConfig.js) and assuming you have two roles (role1 and role2) in your app:
+Add a config for each of the resources you want to use the factory with (e.g config/postsConfig.js) and assuming you have two roles (role1 and role2) in your app and the role of the user is found in the local Storage at `user_role`:
 
 ```
 import React from 'react';
@@ -177,22 +177,24 @@ Creation of fields all at once - based on the order of the configuration
 It will return empty for create Button if the user with role1 doesn't have `create { props: [...], action: true }` in the configuration
 
 e.g for CreateButton:
+```
     <CardActions style={cardActionStyle}>
         {filters && factory.canFilter() && React.cloneElement(filters, { resource, showFilter, displayedFilters, filterValues, context: 'button' }) }
         {factory.createCreateButton(basePath)}
         <FlatButton primary label="refresh" onClick={refresh} icon={<NavigationRefresh />} />
     </CardActions>
+```
 
 e.g in List:
-
+```
 <List title="All posts" {...props} filters={<PostFilter/>} actions={<Actions />} sort={{field: 'id', order: 'DESC'}} perPage={5}>
-        <Datagrid>
-            {factory.createAll("list"}
-            {factory.createShowButton()}
-            {factory.createEditButton()}
-            {factory.createDeleteButton()}
-        </Datagrid>
-    </List>
+    <Datagrid>
+       {factory.createAll("list"}
+       {factory.createShowButton()}
+       {factory.createEditButton()}
+       {factory.createDeleteButton()}
+    </Datagrid>
+</List>
 
 ### Hide properties
 
@@ -211,22 +213,19 @@ if you want to have Search in all fields of a property, you just add "q" in the 
 if you want to have tabbed forms or tabbed show layout you add this tab delimiter `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property like that (make sure you are consistent about the number of tabs for all roles of the specific action):
 
 ```
-    create: {
-			props: ["name", "author, "-----TAB-----", "date"],
-			action: true
-		},
+<Create {...props}>
+   <TabbedForm>
+       <FormTab label="Sample Tab">
+       {factory.createAll("create",0)}
+       </FormTab>
+       <FormTab label="Sample Tab 2">
+       {factory.createAll("create",1)}
+       </FormTab>
+    </TabbedForm>
+</Create>
 ```    
 ```
-    <Create {...props}>
-       <TabbedForm>
-           <FormTab label="Sample Tab">
-           {factory.createAll("create",0)}
-           </FormTab>
-           <FormTab label="Sample Tab 2">
-           {factory.createAll("create",1)}
-           </FormTab>
-        </TabbedForm>
-    </Create>
+    
 ```
 this will put inputs name and author in the first Tab and date in the second Tab
 
