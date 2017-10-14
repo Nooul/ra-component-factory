@@ -1,10 +1,11 @@
 {
     "name": "aor-component-factory",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
     },
+    "main": "./build/index.js",
     "repository": "https://github.com/zifnab87/aor-component-factory.git",
     "private": false,
     "dependencies": {
