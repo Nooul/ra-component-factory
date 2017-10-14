@@ -164,10 +164,10 @@ Creation of fields all at once - based on the order of the configuration
 ```
 {new Factory("posts", factoryConfig).canSeeMenuLink() &&
     <MenuItemLink
-      key="companies"
-      to={`/companies`}
-      primaryText={translate(`resources.companies.name`, { smart_count: 2 })}
-      leftIcon={<CompanyIcon color="#fff" />}
+      key="posts"
+      to={`/posts`}
+      primaryText={translate(`resources.posts.name`, { smart_count: 2 })}
+      leftIcon={<PostIcon color="#fff" />}
       onClick={onMenuTap}
       style={{color: "#fff"}}
     />}
@@ -206,9 +206,9 @@ If you want to hide a property of a resource from list for a secific role (e.g r
 
 if you want a property to be readonly in Edit Mode you prefix it with "_" or whatever prefix you have configured at `factoryConfig.editReadOnlyStartsWith`
 
-### Global Search q 
+### Global Text Search q 
 
-if you want to have Search in all fields of a resource, you just add "q" in the filter
+if you want to have Search in all fields of a resource, you just add "q" in the filter props
 
 ### Tabs 
 
