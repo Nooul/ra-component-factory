@@ -155,7 +155,7 @@ Separate fields:
 
 Creation of fields all at once - based on the order of the configuration
 
-```
+```jsx
     <Edit title={<CompanyTitle />} {...props}>
         <SimpleForm>
             {factory.createAll("edit")}
