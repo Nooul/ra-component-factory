@@ -225,7 +225,7 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
          props: ["name", "author", "-----TAB-----", "date"],
          action: true
       },
-      [....]
+      [...]
   },
 
   role2: {
@@ -233,10 +233,10 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
          props: ["name", "-----TAB-----", "author", "date"],
          action: true
       },
-      //[...]
+      [...]
   },
 
-  //[...]
+  [...]
 }
 ```
 
