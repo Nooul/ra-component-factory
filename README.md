@@ -38,99 +38,97 @@ Add a config for each of the resources you want to use the factory with (e.g con
 ```jsx
 import React from 'react';
 import {
-	[...]
+  [...]
 } from 'admin-on-rest';
 
 export default {
-	props: {
-		id: {
-			input: (<TextInput source="id"/>),
-			field: (<TextField source="id"/>),
-		},
-		name: {
-			input: (<TextInput label="Name" source="name"/>),
-			field: (<TextField label="Name" source="name"/>),
-		},
-    	date: {
-			input: (<DateInput source="date" parse={dateParser} label="Post Date"/>),
-			field: (<DateField source="date" type="date" label="Post Date"/>),
-		},
-		dateGte: { //date Greater than equal
-			input: (<DateInput source="dateGte" parse={dateParser} label="Date from"/>),
-		},
-		dateLte: { // date Less than equal
-			input: (<DateInput source="dateLte" parse={dateParser} label="Date to"/>),
-		},
-    	author: {
-	    	input: <ReferenceInput label="Author" source="author" reference="authors" allowEmpty>
-	                    <SelectInput options={{ listStyle: scrollableAutoComplete}} optionText="name" translate={false}/>
-	               </ReferenceInput>,
-	      	field:  <ReferenceField label="Author" source="author" reference="authors" sortable={false} linkType={false} allowEmpty={true}>     
-		            <ChipField source="name"/>
-		        </ReferenceField>
-	    },
-	},
+    props: {
+        id: {
+            input: (<TextInput source="id"/>),
+            field: (<TextField source="id"/>),
+        },
+        name: {
+            input: (<TextInput label="Name" source="name"/>),
+            field: (<TextField label="Name" source="name"/>),
+        },
+        date: {
+            input: (<DateInput source="date" parse={dateParser} label="Post Date"/>),
+            field: (<DateField source="date" type="date" label="Post Date"/>),
+        },
+        dateGte: { //date Greater than equal
+            input: (<DateInput source="dateGte" parse={dateParser} label="Date from"/>),
+        },
+        dateLte: { // date Less than equal
+            input: (<DateInput source="dateLte" parse={dateParser} label="Date to"/>),
+        },
+        author: {
+            input: <ReferenceInput label="Author" source="author" reference="authors" allowEmpty>
+                      <SelectInput options={{ listStyle: scrollableAutoComplete}} optionText="name" translate={false}/>
+                   </ReferenceInput>,
+            field: <ReferenceField label="Author" source="author" reference="authors" sortable={false} linkType={false} allowEmpty={true}>     
+                      <ChipField source="name"/>
+                    </ReferenceField>
+        },
+    },
 
-	role1: {
-		create: {
-			props: ["name", "author, "date"],
-			action: true
-		},
-		edit: {
-			props: ["_id", "name", "author", "date"],
-			action: true
-		},
-		list: {
-			props: ["id", "name", "author", "date"],
-			action: true
-		},
-		filter: {
-			props: ["q", "id", "author", "dateGte", "dateLte"],
-			action: true
-		},
-		show: {
-			props: ["id", "name", "author"],
-			action: true
-		},
-		search: {
-			action: true
-		},
-		delete: {
-			action: true
-		},
+    role1: {
+        create: {
+            props: ["name", "author, "date"],
+            action: true
+        },
+        edit: {
+            props: ["_id", "name", "author", "date"],
+            action: true
+        },
+        list: {
+            props: ["id", "name", "author", "date"],
+            action: true
+        },
+        filter: {
+            props: ["q", "id", "author", "dateGte", "dateLte"],
+            action: true
+        },
+        show: {
+            props: ["id", "name", "author"],
+            action: true
+        },
+        search: {
+            action: true
+        },
+        delete: {
+            action: true
+        },
 
-	},
-	role2: {
-		create: {
-			props: [],
-			action: false
-		},
-		edit: {
-			props: [],
-			action: false
-		},
-		list: {
-			props: ["id", "name", "author", "date"],
-			action: false
-		},
-		filter: {
-			props: ["q", "id", "author", "dateGte", "dateLte"],
-			action: true
-		},
-		show: {
-			props: ["id", "name", "author"],
-			action: true
-		},
-		search: {
-			action: true
-		},
-		delete: {
-			action: false
-		},
-	}
+    },
+    role2: {
+        create: {
+            props: [],
+            action: false
+        },
+        edit: {
+            props: [],
+            action: false
+        },
+        list: {
+            props: ["id", "name", "author", "date"],
+            action: false
+        },
+        filter: {
+            props: ["q", "id", "author", "dateGte", "dateLte"],
+            action: true
+        },
+        show: {
+            props: ["id", "name", "author"],
+            action: true
+        },
+            search: {
+            action: true
+        },
+            delete: {
+            action: false
+        },
+    }
 };
-
-
 ```
 
 ```js
