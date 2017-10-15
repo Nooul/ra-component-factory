@@ -165,7 +165,7 @@ Creation of fields all at once - based on the order of the configuration
 
 
 ### Usage in Menu:
-```
+```jsx
 {new Factory("posts", factoryConfig).canSeeMenuLink() &&
     <MenuItemLink
       key="posts"
@@ -219,20 +219,24 @@ if you want to have Search in all fields of a resource, you just add "q" in the 
 if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property (make sure you are consistent about the number of tabs for all roles of the specific action):
 
 ```js
-role1: {
-    create: {
-       props: ["name", "author, "-----TAB-----", "date"],
-       action: true
-    },
-    [...]
-}
+{
+  role1: {
+      create: {
+         props: ["name", "author, "-----TAB-----", "date"],
+         action: true
+      },
+      [....]
+  },
 
-role2: {
-    create: {
-       props: ["name", "-----TAB-----", "author, "date"],
-       action: true
-    },
-    [...]
+  role2: {
+      create: {
+         props: ["name", "-----TAB-----", "author, "date"],
+         action: true
+      },
+      //[...]
+  },
+
+  //[...]
 }
 ```
 
