@@ -38,7 +38,13 @@ Add a config for each of the resources you want to use the factory with (e.g con
 ```jsx
 import React from 'react';
 import {
-  [...]
+     TextInput,
+     TextField,
+     DateInput,
+     DateField,
+     ReferenceInput,
+     ReferenceField,
+     ChipField
 } from 'admin-on-rest';
 
 export default {
@@ -63,7 +69,7 @@ export default {
         },
         author: {
             input: <ReferenceInput label="Author" source="author" reference="authors" allowEmpty>
-                      <SelectInput options={{ listStyle: scrollableAutoComplete}} optionText="name" translate={false}/>
+                      <SelectInput optionText="name" translate={false}/>
                    </ReferenceInput>,
             field: <ReferenceField label="Author" source="author" reference="authors" sortable={false} linkType={false} allowEmpty={true}>     
                       <ChipField source="name"/>
@@ -121,10 +127,10 @@ export default {
             props: ["id", "name", "author"],
             action: true
         },
-            search: {
+        search: {
             action: true
         },
-            delete: {
+        delete: {
             action: false
         },
     }
