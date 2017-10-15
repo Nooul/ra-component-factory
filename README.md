@@ -222,7 +222,7 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
 {
   role1: {
       create: {
-         props: ["name", "author, "-----TAB-----", "date"],
+         props: ["name", "author", "-----TAB-----", "date"],
          action: true
       },
       [....]
