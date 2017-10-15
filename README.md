@@ -1,6 +1,6 @@
-[![npm](https://img.shields.io/npm/dw/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
-[![npm](https://img.shields.io/npm/v/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
-[![npm](https://img.shields.io/npm/l/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/dw/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/v/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/l/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
 
 # ra-component-factory
 
