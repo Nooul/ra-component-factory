@@ -1,12 +1,12 @@
 {
-    "name": "aor-component-factory",
+    "name": "ra-component-factory",
     "version": "0.1.5",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
     },
     "main": "./build/index.js",
-    "repository": "https://github.com/zifnab87/aor-component-factory.git",
+    "repository": "https://github.com/zifnab87/ra-component-factory.git",
     "private": false,
     "dependencies": {
         "react": "^15.5.4",
@@ -31,6 +31,6 @@
         "admin-on-rest": "1.3.2",
         "react": "15.5.4"
     },
-    "homepage": "http://github.com/zifnab87/aor-component-factory",
+    "homepage": "http://github.com/zifnab87/ra-component-factory",
     "license": "MIT"
 }
