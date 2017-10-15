@@ -21,7 +21,7 @@ Add `"ra-component-factory": "0.1.5"` in your package.json and run `npm install`
 
 Add a global Config like that (e.g config/factoryConfig.js):
 
-```
+```js
 import postsConfig from './config/postsConfig';
 export default {
 	resources: {
@@ -35,7 +35,7 @@ export default {
 
 Add a config for each of the resources you want to use the factory with (e.g config/postsConfig.js). You can have all resources in the same file if you choose so. Assuming you have two roles (role1 and role2) in your app and the role of the user is found in the local Storage at `user_role` it will look like that:
 
-```
+```jsx
 import React from 'react';
 import {
 	[...]
@@ -133,7 +133,7 @@ export default {
 
 ```
 
-```
+```js
 import Factory from 'ra-component-factory';
 import factoryConfig from './config/factoryConfig';
 const factory = new Factory("posts", factoryConfig);
@@ -143,7 +143,7 @@ const factory = new Factory("posts", factoryConfig);
 
 Separate fields:
 
-```
+```jsx
     <Edit {...props}>
         <SimpleForm>
             {factory.create("edit","id")} // this will be readonly since in edit it is denoted as _id
@@ -182,7 +182,7 @@ Creation of fields all at once - based on the order of the configuration
 It will return empty for create Button if the user with role1 doesn't have `create { props: [...], action: true }` in the configuration
 
 e.g for CreateButton:
-```
+```jsx
     <CardActions style={cardActionStyle}>
         {filters && factory.canFilter() && React.cloneElement(filters, { resource, showFilter, displayedFilters, filterValues, context: 'button' }) }
         {factory.createCreateButton(basePath)}
@@ -191,7 +191,7 @@ e.g for CreateButton:
 ```
 
 e.g in List:
-```
+```jsx
 <List title="All posts" {...props} filters={<PostFilter/>} actions={<Actions />} sort={{field: 'id', order: 'DESC'}} perPage={5}>
     <Datagrid>
        {factory.createAll("list"}
@@ -218,7 +218,7 @@ if you want to have Search in all fields of a resource, you just add "q" in the 
 
 if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property (make sure you are consistent about the number of tabs for all roles of the specific action):
 
-```
+```js
 role1: {
     create: {
        props: ["name", "author, "-----TAB-----", "date"],
@@ -236,7 +236,7 @@ role2: {
 }
 ```
 
-```
+```jsx
 <Create {...props}>
    <TabbedForm>
        <FormTab label="Sample Tab">
