@@ -1,6 +1,6 @@
-# aor-component-factory
+# ra-component-factory
 
-admin-on-rest component-factory provides a centralized way to easily configure:
+react-admin component-factory provides a centralized way to easily configure:
 - permissions on action buttons (should a CreateButton be visible ?)
 - permissions on Forms/Actions (should edit form of a resource be accessible to a user?)
 - permissions on Menu Links (should a Menu Link be visible ?)
@@ -11,7 +11,7 @@ admin-on-rest component-factory provides a centralized way to easily configure:
 
 ### Installation:
 
-Add `"aor-component-factory": "0.1.5"` in your package.json and run `npm install`
+Add `"ra-component-factory": "0.1.5"` in your package.json and run `npm install`
 
 ### Global Config:
 
@@ -130,7 +130,7 @@ export default {
 ```
 
 ```
-import Factory from 'aor-component-factory';
+import Factory from 'ra-component-factory';
 import factoryConfig from './config/factoryConfig';
 const factory = new Factory("posts", factoryConfig);
 ```
