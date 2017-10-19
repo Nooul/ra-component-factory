@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/v/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
 [![npm](https://img.shields.io/npm/l/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
 
-# ra-component-factory
+# ra-component-factory (former: aor-component-factory)
 
 react-admin component-factory provides a centralized way to easily configure:
 - permissions on action buttons (should a CreateButton be visible ?)
@@ -71,7 +71,7 @@ export default {
             input: <ReferenceInput label="Author" source="author" reference="authors" allowEmpty>
                       <SelectInput optionText="name" translate={false}/>
                    </ReferenceInput>,
-            field: <ReferenceField label="Author" source="author" reference="authors" sortable={false} linkType={false} allowEmpty={true}>     
+            field: <ReferenceField label="Author" source="author" reference="authors" sortable={false} linkType={false} allowEmpty={true}>
                       <ChipField source="name"/>
                     </ReferenceField>
         },
@@ -214,11 +214,11 @@ If you want to hide a property of a resource from list for a secific role (e.g r
 
 if you want a property to be readonly in Edit Mode you prefix it with "_" or whatever prefix you have configured at `factoryConfig.editReadOnlyStartsWith`
 
-### Global Text Search q 
+### Global Text Search q
 
 if you want to have Search in all fields of a resource, you just add "q" in the filter props
 
-### Tabs 
+### Tabs
 
 if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property (make sure you are consistent about the number of tabs for all roles of the specific action):
 
@@ -255,7 +255,7 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
        </FormTab>
     </TabbedForm>
 </Create>
-```    
+```
 This will put inputs `name` and `author` in the first `Tab` and `date` in the second `Tab` for `role1` users.
 It will put input `name` in the first `Tab` and `author`,`date` in the second `Tab` for `role2` users.
- 
+
