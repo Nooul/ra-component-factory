@@ -1,10 +1,10 @@
-[![npm](https://img.shields.io/npm/dw/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
-[![npm](https://img.shields.io/npm/v/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
-[![npm](https://img.shields.io/npm/l/aor-embedded-array.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/dw/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/v/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/l/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
 
 # ra-component-factory (former: aor-component-factory)
 
-react-admin component-factory provides a centralized way to easily configure:
+react-admin component-factory when used with http://github.com/marmelab/admin-on-rest provides a centralized way to easily configure:
 - permissions on action buttons (should a CreateButton be visible ?)
 - permissions on Forms/Actions (should edit form of a resource be accessible to a user?)
 - permissions on Menu Links (should a Menu Link be visible ?)
