@@ -79,7 +79,7 @@ export default {
 
     role1: {
         create: {
-            props: ["name", "author, "date"],
+            props: ["name", "author", "date"],
             action: true
         },
         edit: {
