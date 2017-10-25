@@ -15,7 +15,7 @@ react-admin component-factory when used with http://github.com/marmelab/admin-on
 
 ### Installation:
 
-Add `"ra-component-factory": "0.1.5"` in your package.json and run `npm install`
+```npm install ra-component-factory```
 
 ### Global Config:
 
