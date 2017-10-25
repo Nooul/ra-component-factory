@@ -58,7 +58,7 @@ export default class Factory {
         let role = localStorage.getItem(this.userRole);
         let createPolicy = this.getActionPolicy(role, "create");
         if (createPolicy) {
-            return (<CreateButton basePath={basePath} translate={true}/>);
+            return (<CreateButton redirect={false} basePath={basePath} translate={true}/>);
         }
         else {
             return '';
@@ -81,7 +81,7 @@ export default class Factory {
         let role = localStorage.getItem(this.userRole);
         let editPolicy = this.getActionPolicy(role, "edit");
         if (editPolicy) {
-            return (<EditButton translate={true}/>);
+            return (<EditButton redirect={false} translate={true}/>);
         }
         else {
             return '';
