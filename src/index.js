@@ -58,7 +58,7 @@ export default class Factory {
         let role = localStorage.getItem(this.userRole);
         let createPolicy = this.getActionPolicy(role, "create");
         if (createPolicy) {
-            return (<CreateButton redirect={false} basePath={basePath} translate={true}/>);
+            return (<CreateButton redirect={false} translate={true}/>);
         }
         else {
             return '';
