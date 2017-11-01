@@ -4,7 +4,8 @@ import {
     CreateButton,
     EditButton,
     DeleteButton,
-    TextInput
+    TextInput,
+    FormTab,
 } from 'admin-on-rest';
 
 export default class Factory {
@@ -58,7 +59,7 @@ export default class Factory {
         let role = localStorage.getItem(this.userRole);
         let createPolicy = this.getActionPolicy(role, "create");
         if (createPolicy) {
-            return (<CreateButton redirect={false} translate={true}/>);
+            return (<CreateButton basePath={basePath} translate={true}/>);
         }
         else {
             return '';
@@ -81,7 +82,7 @@ export default class Factory {
         let role = localStorage.getItem(this.userRole);
         let editPolicy = this.getActionPolicy(role, "edit");
         if (editPolicy) {
-            return (<EditButton redirect={false} translate={true}/>);
+            return (<EditButton translate={true}/>);
         }
         else {
             return '';
@@ -111,18 +112,59 @@ export default class Factory {
         return filterPolicy;
     }
 
-    createAll(action, tab) { //tab is optional
+
+    createAll(action) {
         let i = 0;
-        let components =  this.getCollectionOfProperties(action, tab).map((p) => {
-            let property = p.prop;
-            let propPolicy = p.type;
-            let comp = this.create(action, property, propPolicy);
-            return React.cloneElement(comp, {key: i++});
-        });
-        if (components.length === 0) {
-            return '';
+        let allProps = this.getCollectionOfProperties(action);
+        let countOfTabs = this.numberOfTabDelimiters(allProps);
+
+        if (countOfTabs === 0) {
+            return allProps.filter(a => a.prop !== this.tabDelimiter).map((p) => {
+                let property = p.prop;
+                let propPolicy = p.type;
+                let comp = this.create(action, property, propPolicy);
+                return React.cloneElement(comp, {key: i++});
+            });
         }
-        return components;
+
+
+
+        let tabs = [];
+        let role = localStorage.getItem(this.userRole);
+
+        for (let tabIndex = 0; tabIndex <= countOfTabs; tabIndex++) {
+            let components = this.getCollectionOfProperties(action, tabIndex).map((p) => {
+                let property = p.prop;
+                let propPolicy = p.type;
+                let comp = this.create(action, property, propPolicy);
+                return React.cloneElement(comp, {key: i++});
+            });
+            if (components.length === 0) {
+                return '';
+            }
+            let tabLabel = "Tab "+(tabIndex+1);
+            if (this.config["resources"][this.resource][role][action]["tabs"] &&
+                this.config["resources"][this.resource][role][action]["tabs"][tabIndex]) {
+                tabLabel = this.config["resources"][this.resource][role][action]["tabs"][tabIndex];
+            }
+            if (action === "create" || action === "edit") {
+                tabs.push(React.cloneElement(<FormTab label={tabLabel}>{ components }</FormTab>, {key: i++}))
+            }
+            else if (action === "show") {
+                tabs.push(<Tab label={tabLabel}>{ components }</Tab>)
+            }
+        }
+        return tabs;
+    }
+
+    numberOfTabDelimiters(props) {
+        let count = 0;
+        for (let prop of props) {
+            if (prop.prop === this.tabDelimiter) {
+                count++;
+            }
+        }
+        return count;
     }
 
     getCollectionOfProperties(action, tab) {
@@ -161,7 +203,7 @@ export default class Factory {
 
     choosePropertiesOfTab(action, allProps, tab) {
         if (tab === null || tab === undefined) {
-            return allProps.filter(a => a.prop !== this.tabDelimiter);
+            return allProps;
         }
         let listOfLists = [];
         let array = [];

@@ -53484,21 +53484,89 @@ var Factory = function () {
         }
     }, {
         key: 'createAll',
-        value: function createAll(action, tab) {
+        value: function createAll(action) {
             var _this = this;
 
-            //tab is optional
             var i = 0;
-            var components = this.getCollectionOfProperties(action, tab).map(function (p) {
-                var property = p.prop;
-                var propPolicy = p.type;
-                var comp = _this.create(action, property, propPolicy);
-                return _react2.default.cloneElement(comp, { key: i++ });
-            });
-            if (components.length === 0) {
-                return '';
+            var allProps = this.getCollectionOfProperties(action);
+            var countOfTabs = this.numberOfTabDelimiters(allProps);
+
+            if (countOfTabs === 0) {
+                return allProps.filter(function (a) {
+                    return a.prop !== _this.tabDelimiter;
+                }).map(function (p) {
+                    var property = p.prop;
+                    var propPolicy = p.type;
+                    var comp = _this.create(action, property, propPolicy);
+                    return _react2.default.cloneElement(comp, { key: i++ });
+                });
             }
-            return components;
+
+            var tabs = [];
+            var role = localStorage.getItem(this.userRole);
+
+            for (var tabIndex = 0; tabIndex <= countOfTabs; tabIndex++) {
+                var components = this.getCollectionOfProperties(action, tabIndex).map(function (p) {
+                    var property = p.prop;
+                    var propPolicy = p.type;
+                    var comp = _this.create(action, property, propPolicy);
+                    return _react2.default.cloneElement(comp, { key: i++ });
+                });
+                if (components.length === 0) {
+                    return '';
+                }
+                var tabLabel = "Tab " + (tabIndex + 1);
+                if (this.config["resources"][this.resource][role][action]["tabs"] && this.config["resources"][this.resource][role][action]["tabs"][tabIndex]) {
+                    tabLabel = this.config["resources"][this.resource][role][action]["tabs"][tabIndex];
+                }
+                if (action === "create" || action === "edit") {
+                    tabs.push(_react2.default.cloneElement(_react2.default.createElement(
+                        _adminOnRest.FormTab,
+                        { label: tabLabel },
+                        components
+                    ), { key: i++ }));
+                } else if (action === "show") {
+                    tabs.push(_react2.default.createElement(
+                        Tab,
+                        { label: tabLabel },
+                        components
+                    ));
+                }
+            }
+            return tabs;
+        }
+    }, {
+        key: 'numberOfTabDelimiters',
+        value: function numberOfTabDelimiters(props) {
+            var count = 0;
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = props[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var prop = _step.value;
+
+                    if (prop.prop === this.tabDelimiter) {
+                        count++;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            return count;
         }
     }, {
         key: 'getCollectionOfProperties',
@@ -53511,13 +53579,13 @@ var Factory = function () {
             var allProps = [];
 
             if (Array.isArray(props)) {
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
+                var _iteratorNormalCompletion2 = true;
+                var _didIteratorError2 = false;
+                var _iteratorError2 = undefined;
 
                 try {
-                    for (var _iterator = props[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var prop = _step.value;
+                    for (var _iterator2 = props[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                        var prop = _step2.value;
 
                         var type = void 0;
                         if (action === "edit") {
@@ -53535,16 +53603,16 @@ var Factory = function () {
                         allProps.push({ type: type, prop: prop });
                     }
                 } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
+                    _didIteratorError2 = true;
+                    _iteratorError2 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
+                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                            _iterator2.return();
                         }
                     } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
+                        if (_didIteratorError2) {
+                            throw _iteratorError2;
                         }
                     }
                 }
@@ -53554,24 +53622,20 @@ var Factory = function () {
     }, {
         key: 'choosePropertiesOfTab',
         value: function choosePropertiesOfTab(action, allProps, tab) {
-            var _this2 = this;
-
             if (tab === null || tab === undefined) {
-                return allProps.filter(function (a) {
-                    return a.prop !== _this2.tabDelimiter;
-                });
+                return allProps;
             }
             var listOfLists = [];
             var array = [];
             listOfLists.push(array);
             var currArray = listOfLists[listOfLists.length - 1];
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator2 = allProps[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var prop = _step2.value;
+                for (var _iterator3 = allProps[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var prop = _step3.value;
 
                     if (prop.prop !== this.tabDelimiter) {
                         currArray.push(prop);
@@ -53581,16 +53645,16 @@ var Factory = function () {
                     }
                 }
             } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
                     }
                 } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
                     }
                 }
             }
