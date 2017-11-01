@@ -1,6 +1,6 @@
-[![npm](https://img.shields.io/npm/dw/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
-[![npm](https://img.shields.io/npm/v/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
-[![npm](https://img.shields.io/npm/l/aor-component-factory.svg)](https://www.npmjs.com/package/aor-component-factory)
+[![npm](https://img.shields.io/npm/dw/ra-component-factory.svg)](https://www.npmjs.com/package/ra-component-factory)
+[![npm](https://img.shields.io/npm/v/ra-component-factory.svg)](https://www.npmjs.com/package/ra-component-factory)
+[![npm](https://img.shields.io/npm/l/ra-component-factory.svg)](https://www.npmjs.com/package/ra-component-factory)
 
 # ra-component-factory (former: aor-component-factory)
 
@@ -220,13 +220,14 @@ if you want to have Search in all fields of a resource, you just add "q" in the 
 
 ### Tabs
 
-if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property (make sure you are consistent about the number of tabs for all roles of the specific action):
+if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property in actions create and edit (show is not yet supported)
 
 ```js
 {
   role1: {
       create: {
          props: ["name", "author", "-----TAB-----", "date"],
+	 tabs: ["Sample Tab 1", "Sample Tab 2"],
          action: true
       },
       [...]
@@ -234,7 +235,8 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
 
   role2: {
       create: {
-         props: ["name", "-----TAB-----", "author", "date"],
+         props: ["name", "-----TAB-----", "author", "-----TAB-----", "date"],
+	 tabs: ["Sample Tab 1", "Sample Tab 2", "Sample Tab 3"],
          action: true
       },
       [...]
@@ -247,15 +249,12 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
 ```jsx
 <Create {...props}>
    <TabbedForm>
-       <FormTab label="Sample Tab">
-       {factory.createAll("create",0)}
-       </FormTab>
-       <FormTab label="Sample Tab 2">
-       {factory.createAll("create",1)}
-       </FormTab>
+       {factory.createAll("create")}
     </TabbedForm>
 </Create>
 ```
-This will put inputs `name` and `author` in the first `Tab` and `date` in the second `Tab` for `role1` users.
-It will put input `name` in the first `Tab` and `author`,`date` in the second `Tab` for `role2` users.
+This will put inputs `name` and `author` in the first `Tab` and `date` in the second `FormTab` for `role1` users.
+It will put input `name` in the first `FormTab`, `author` in the second `FormTab` and `date` in the third `Tab` for `role2` users.
+
+if tabs is missing from the configuration - the default labels "Tab 1", "Tab 2", "Tab 3" will show up 
 
