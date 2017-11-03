@@ -6,6 +6,7 @@ import {
     DeleteButton,
     TextInput,
     FormTab,
+    Tab
 } from 'admin-on-rest';
 
 export default class Factory {

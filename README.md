@@ -220,7 +220,7 @@ if you want to have Search in all fields of a resource, you just add "q" in the 
 
 ### Tabs
 
-if you want to have tabbed forms or tabbed show layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property in actions create and edit (show is not yet supported)
+if you want to have tabbed forms `Edit`/`Create` or tabbed `Show` layout you add tab delimiters `'-----TAB-----'` or whatever is configured in `factoryConfig.tabDelimiter` as a property in actions create, edit or show.
 
 ```js
 {
@@ -254,7 +254,17 @@ if you want to have tabbed forms or tabbed show layout you add tab delimiters `'
 </Create>
 ```
 This will put inputs `name` and `author` in the first `Tab` and `date` in the second `FormTab` for `role1` users.
-It will put input `name` in the first `FormTab`, `author` in the second `FormTab` and `date` in the third `Tab` for `role2` users.
+It will put input `name` in the first `FormTab`, `author` in the second `FormTab` and `date` in the third `FormTab` for `role2` users.
 
-if tabs is missing from the configuration - the default labels "Tab 1", "Tab 2", "Tab 3" will show up 
+if tabs is missing from the configuration - the default labels "Tab 1", "Tab 2", "Tab 3" will show up
+
+Similarly for Show:
+
+```jsx
+<Show {...props}>
+  <TabbedShowLayout>
+       {factory.createAll("show")}
+    </TabbedShowLayout>
+</Show>
+```
 

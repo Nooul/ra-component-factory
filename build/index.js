@@ -53527,7 +53527,7 @@ var Factory = function () {
                     ), { key: i++ }));
                 } else if (action === "show") {
                     tabs.push(_react2.default.createElement(
-                        Tab,
+                        _adminOnRest.Tab,
                         { label: tabLabel },
                         components
                     ));
