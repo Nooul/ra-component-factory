@@ -53489,7 +53489,7 @@ var Factory = function () {
 
             var i = 0;
             var allProps = this.getCollectionOfProperties(action);
-            var countOfTabs = this.numberOfTabDelimiters(allProps);
+            var countOfTabs = this.countOfTabs(allProps);
 
             if (countOfTabs === 0) {
                 return allProps.filter(function (a) {
@@ -53505,7 +53505,7 @@ var Factory = function () {
             var tabs = [];
             var role = localStorage.getItem(this.userRole);
 
-            for (var tabIndex = 0; tabIndex <= countOfTabs; tabIndex++) {
+            for (var tabIndex = 0; tabIndex < countOfTabs; tabIndex++) {
                 var components = this.getCollectionOfProperties(action, tabIndex).map(function (p) {
                     var property = p.prop;
                     var propPolicy = p.type;
@@ -53536,9 +53536,10 @@ var Factory = function () {
             return tabs;
         }
     }, {
-        key: 'numberOfTabDelimiters',
-        value: function numberOfTabDelimiters(props) {
+        key: 'countOfTabs',
+        value: function countOfTabs(props) {
             var count = 0;
+            var hasTabs = false;
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -53549,6 +53550,7 @@ var Factory = function () {
 
                     if (prop.prop === this.tabDelimiter) {
                         count++;
+                        hasTabs = true;
                     }
                 }
             } catch (err) {
@@ -53564,6 +53566,11 @@ var Factory = function () {
                         throw _iteratorError;
                     }
                 }
+            }
+
+            var lastEntry = props[props.length - 1];
+            if (lastEntry.prop !== this.tabDelimiter && hasTabs) {
+                count++;
             }
 
             return count;
