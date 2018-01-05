@@ -117,7 +117,7 @@ export default class Factory {
     createAll(action) {
         let i = 0;
         let allProps = this.getCollectionOfProperties(action);
-        let countOfTabs = this.numberOfTabDelimiters(allProps);
+        let countOfTabs = this.countOfTabs(allProps);
 
         if (countOfTabs === 0) {
             return allProps.filter(a => a.prop !== this.tabDelimiter).map((p) => {
@@ -128,12 +128,10 @@ export default class Factory {
             });
         }
 
-
-
         let tabs = [];
         let role = localStorage.getItem(this.userRole);
 
-        for (let tabIndex = 0; tabIndex <= countOfTabs; tabIndex++) {
+        for (let tabIndex = 0; tabIndex < countOfTabs; tabIndex++) {
             let components = this.getCollectionOfProperties(action, tabIndex).map((p) => {
                 let property = p.prop;
                 let propPolicy = p.type;
@@ -158,13 +156,20 @@ export default class Factory {
         return tabs;
     }
 
-    numberOfTabDelimiters(props) {
+    countOfTabs(props) {
         let count = 0;
+        let hasTabs = false;
         for (let prop of props) {
             if (prop.prop === this.tabDelimiter) {
                 count++;
+                hasTabs = true;
             }
         }
+        let lastEntry = props[props.length-1];
+        if (lastEntry.prop !== this.tabDelimiter && hasTabs) {
+            count++;
+        }
+
         return count;
     }
 
