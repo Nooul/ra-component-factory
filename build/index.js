@@ -53439,7 +53439,7 @@ var Factory = function () {
         key: 'createShowButton',
         value: function createShowButton(width) {
             var action = "show";
-            var mobileAction = action + width ? "_mobile" : "";
+            var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var showPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (showPolicy) {
@@ -53452,7 +53452,7 @@ var Factory = function () {
         key: 'createEditButton',
         value: function createEditButton(width) {
             var action = "edit";
-            var mobileAction = action + width ? "_mobile" : "";
+            var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var editPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (editPolicy) {
@@ -53465,7 +53465,7 @@ var Factory = function () {
         key: 'createDeleteButton',
         value: function createDeleteButton(width) {
             var action = "delete";
-            var mobileAction = action + width ? "_mobile" : "";
+            var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var deletePolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (deletePolicy) {
@@ -53478,7 +53478,7 @@ var Factory = function () {
         key: 'canFilter',
         value: function canFilter(width) {
             var action = "filter";
-            var mobileAction = action + width ? "_mobile" : "";
+            var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var filterPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             return filterPolicy;
@@ -53487,7 +53487,7 @@ var Factory = function () {
         key: 'canSeeMenuLink',
         value: function canSeeMenuLink(width) {
             var action = "list";
-            var mobileAction = action + width ? "_mobile" : "";
+            var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var listPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             return listPolicy;

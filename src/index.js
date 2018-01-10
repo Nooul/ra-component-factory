@@ -70,7 +70,7 @@ export default class Factory {
 
     createShowButton(width) {
         let action = "show";
-        let mobileAction = action + (width)? "_mobile":"";
+        let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let showPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
@@ -84,7 +84,7 @@ export default class Factory {
 
     createEditButton(width) {
         let action = "edit";
-        let mobileAction = action + (width)? "_mobile":"";
+        let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let editPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
@@ -98,7 +98,7 @@ export default class Factory {
 
     createDeleteButton(width) {
         let action = "delete";
-        let mobileAction = action + (width)? "_mobile":"";
+        let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let deletePolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
@@ -112,7 +112,7 @@ export default class Factory {
 
     canFilter(width) {
         let action = "filter";
-        let mobileAction = action + (width)? "_mobile":"";
+        let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let filterPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
@@ -121,7 +121,7 @@ export default class Factory {
 
     canSeeMenuLink(width) {
         let action = "list";
-        let mobileAction = action + (width)? "_mobile":"";
+        let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let listPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
