@@ -53406,7 +53406,7 @@ var Factory = function () {
         value: function create(action, prop, propPolicy) {
             var component = null;
             var role = localStorage.getItem(this.userRole);
-            if (prop === "q" && action === "filter") {
+            if (prop === "q" && action.startsWith("filter")) {
                 return _react2.default.createElement(_adminOnRest.TextInput, { label: 'Search in text fields', source: 'q', alwaysOn: true });
             }
 
@@ -53595,14 +53595,14 @@ var Factory = function () {
                         var prop = _step2.value;
 
                         var type = void 0;
-                        if (action === "edit") {
+                        if (action.startsWith("edit")) {
                             if (prop.startsWith(this.readOnlyInEdit)) {
                                 prop = prop.substring(1);
                                 type = "field";
                             } else {
                                 type = "input";
                             }
-                        } else if (action === "create" || action === "filter") {
+                        } else if (action.startsWith("create") || action.startsWith("filter")) {
                             type = "input";
                         } else {
                             type = "field";
@@ -53689,11 +53689,11 @@ var Factory = function () {
                 return 'hidden';
             }
 
-            if (props.indexOf(prop) > -1 && (action === "filter" || action == "create")) {
+            if (props.indexOf(prop) > -1 && (action.startsWith("filter") || action.startsWith("create"))) {
                 return "input";
-            } else if (props.indexOf(prop) > -1 && action !== "edit") {
+            } else if (props.indexOf(prop) > -1 && !action.startsWith("edit")) {
                 return "field";
-            } else if (action === "edit") {
+            } else if (action.startsWith("edit")) {
                 if (props.indexOf(this.readOnlyInEdit + prop) > -1) {
                     return "field";
                 } else if (props.indexOf(prop) > -1) {

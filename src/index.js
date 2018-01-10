@@ -37,7 +37,7 @@ export default class Factory {
     create(action, prop, propPolicy) {
         let component = null;
         let role = localStorage.getItem(this.userRole);
-        if (prop === "q" && action === "filter") {
+        if (prop === "q" && action.startsWith("filter")) {
             return <TextInput label="Search in text fields" source="q" alwaysOn />;
         }
 
@@ -186,7 +186,7 @@ export default class Factory {
         if (Array.isArray(props)) {
             for (let prop of props) {
                 let type;
-                if (action === "edit") {
+                if (action.startsWith("edit")) {
                     if (prop.startsWith(this.readOnlyInEdit)) {
                       prop = prop.substring(1);
                       type = "field";
@@ -195,7 +195,7 @@ export default class Factory {
                       type = "input";
                     }
                 }
-                else if (action === "create" || action === "filter") {
+                else if (action.startsWith("create") || action.startsWith("filter")) {
                     type = "input";
                 }
                 else {
@@ -251,13 +251,13 @@ export default class Factory {
             return 'hidden';
         }
 
-        if(props.indexOf(prop) > -1 && (action === "filter" || action == "create")) {
+        if(props.indexOf(prop) > -1 && (action.startsWith("filter") || action.startsWith("create"))) {
             return "input";
         }
-        else if(props.indexOf(prop) > -1 && action !== "edit") {
+        else if(props.indexOf(prop) > -1 && !action.startsWith("edit")) {
             return "field";
         }
-        else if (action === "edit") {
+        else if (action.startsWith("edit")) {
             if (props.indexOf(this.readOnlyInEdit + prop) > -1) {
               return "field";
             }
