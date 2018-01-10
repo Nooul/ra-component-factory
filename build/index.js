@@ -53681,7 +53681,7 @@ var Factory = function () {
     }, {
         key: 'getActionPolicy',
         value: function getActionPolicy(role, action) {
-            if (!this.config["resources"][this.resource] || !this.config["resources"][this.resource][role] || !this.config["resources"][this.resource][role][action] || !this.config["resources"][this.resource][role][action]["action"]) {
+            if (this.config["resources"][this.resource] === undefined || this.config["resources"][this.resource][role] === undefined || this.config["resources"][this.resource][role][action] === undefined || this.config["resources"][this.resource][role][action]["action"] === undefined) {
                 return undefined;
             }
 
