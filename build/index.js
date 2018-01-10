@@ -53441,7 +53441,7 @@ var Factory = function () {
             var action = "show";
             var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var showPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
+            var showPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (showPolicy) {
                 return _react2.default.createElement(_adminOnRest.ShowButton, { translate: true });
             } else {
@@ -53454,7 +53454,7 @@ var Factory = function () {
             var action = "edit";
             var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var editPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
+            var editPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (editPolicy) {
                 return _react2.default.createElement(_adminOnRest.EditButton, { translate: true });
             } else {
@@ -53467,7 +53467,7 @@ var Factory = function () {
             var action = "delete";
             var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var deletePolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
+            var deletePolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (deletePolicy) {
                 return _react2.default.createElement(_adminOnRest.DeleteButton, { translate: true });
             } else {
@@ -53480,7 +53480,7 @@ var Factory = function () {
             var action = "filter";
             var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var filterPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
+            var filterPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             return filterPolicy;
         }
     }, {
@@ -53489,8 +53489,8 @@ var Factory = function () {
             var action = "list";
             var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var filterPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
-            return filterPolicy;
+            var listPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
+            return listPolicy;
         }
     }, {
         key: 'createAll',

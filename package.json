@@ -1,6 +1,6 @@
 {
     "name": "ra-component-factory",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
@@ -28,7 +28,7 @@
         "babel-preset-env": "^1.5.1"
     },
     "peerDependencies": {
-        "admin-on-rest": "1.3.2",
+        "admin-on-rest": "1.3.3",
         "react": "15.5.4"
     },
     "homepage": "http://github.com/zifnab87/ra-component-factory",
