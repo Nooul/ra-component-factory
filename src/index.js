@@ -68,9 +68,11 @@ export default class Factory {
     }
 
 
-    createShowButton() {
+    createShowButton(width) {
+        let action = "show";
+        let mobileAction = action + (width)? "_mobile":"";
         let role = localStorage.getItem(this.userRole);
-        let showPolicy = this.getActionPolicy(role, "show");
+        let showPolicy = (this.getActionPolicy(role, mobileAction) === undefined) || this.getActionPolicy(role, action);
         if (showPolicy) {
             return (<ShowButton translate={true}/>);
         }
@@ -79,9 +81,11 @@ export default class Factory {
         }
     }
 
-    createEditButton() {
+    createEditButton(width) {
+        let action = "edit";
+        let mobileAction = action + (width)? "_mobile":"";
         let role = localStorage.getItem(this.userRole);
-        let editPolicy = this.getActionPolicy(role, "edit");
+        let editPolicy = (this.getActionPolicy(role, mobileAction) === undefined) || this.getActionPolicy(role, action);
         if (editPolicy) {
             return (<EditButton translate={true}/>);
         }
@@ -90,9 +94,11 @@ export default class Factory {
         }
     }
 
-    createDeleteButton() {
+    createDeleteButton(width) {
+        let action = "delete";
+        let mobileAction = action + (width)? "_mobile":"";
         let role = localStorage.getItem(this.userRole);
-        let deletePolicy = this.getActionPolicy(role, "delete");
+        let deletePolicy = (this.getActionPolicy(role, mobileAction) === undefined) || this.getActionPolicy(role, action);
         if (deletePolicy) {
             return (<DeleteButton translate={true}/>);
         }
@@ -101,15 +107,19 @@ export default class Factory {
         }
     }
 
-    canFilter() {
+    canFilter(width) {
+        let action = "filter";
+        let mobileAction = action + (width)? "_mobile":"";
         let role = localStorage.getItem(this.userRole);
-        let filterPolicy = this.getActionPolicy(role, "filter");
+        let filterPolicy = (this.getActionPolicy(role, mobileAction) === undefined) || this.getActionPolicy(role, action);
         return filterPolicy;
     }
 
-    canSeeMenuLink() {
+    canSeeMenuLink(width) {
+        let action = "list";
+        let mobileAction = action + (width)? "_mobile":"";
         let role = localStorage.getItem(this.userRole);
-        let filterPolicy = this.getActionPolicy(role, "list");
+        let filterPolicy = (this.getActionPolicy(role, mobileAction) === undefined) || this.getActionPolicy(role, action);
         return filterPolicy;
     }
 
@@ -232,8 +242,9 @@ export default class Factory {
             !this.config["resources"][this.resource][role] ||
             !this.config["resources"][this.resource][role][action] ||
             !this.config["resources"][this.resource][role][action]["action"]) {
-            return false;
+            return undefined;
         }
+
         let policy = this.config["resources"][this.resource][role][action]["action"];
         return policy;
     }

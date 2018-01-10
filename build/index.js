@@ -53437,9 +53437,11 @@ var Factory = function () {
         }
     }, {
         key: 'createShowButton',
-        value: function createShowButton() {
+        value: function createShowButton(width) {
+            var action = "show";
+            var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var showPolicy = this.getActionPolicy(role, "show");
+            var showPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
             if (showPolicy) {
                 return _react2.default.createElement(_adminOnRest.ShowButton, { translate: true });
             } else {
@@ -53448,9 +53450,11 @@ var Factory = function () {
         }
     }, {
         key: 'createEditButton',
-        value: function createEditButton() {
+        value: function createEditButton(width) {
+            var action = "edit";
+            var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var editPolicy = this.getActionPolicy(role, "edit");
+            var editPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
             if (editPolicy) {
                 return _react2.default.createElement(_adminOnRest.EditButton, { translate: true });
             } else {
@@ -53459,9 +53463,11 @@ var Factory = function () {
         }
     }, {
         key: 'createDeleteButton',
-        value: function createDeleteButton() {
+        value: function createDeleteButton(width) {
+            var action = "delete";
+            var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var deletePolicy = this.getActionPolicy(role, "delete");
+            var deletePolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
             if (deletePolicy) {
                 return _react2.default.createElement(_adminOnRest.DeleteButton, { translate: true });
             } else {
@@ -53470,16 +53476,20 @@ var Factory = function () {
         }
     }, {
         key: 'canFilter',
-        value: function canFilter() {
+        value: function canFilter(width) {
+            var action = "filter";
+            var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var filterPolicy = this.getActionPolicy(role, "filter");
+            var filterPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
             return filterPolicy;
         }
     }, {
         key: 'canSeeMenuLink',
-        value: function canSeeMenuLink() {
+        value: function canSeeMenuLink(width) {
+            var action = "list";
+            var mobileAction = action + width ? "_mobile" : "";
             var role = localStorage.getItem(this.userRole);
-            var filterPolicy = this.getActionPolicy(role, "list");
+            var filterPolicy = this.getActionPolicy(role, mobileAction) === undefined || this.getActionPolicy(role, action);
             return filterPolicy;
         }
     }, {
@@ -53672,8 +53682,9 @@ var Factory = function () {
         key: 'getActionPolicy',
         value: function getActionPolicy(role, action) {
             if (!this.config["resources"][this.resource] || !this.config["resources"][this.resource][role] || !this.config["resources"][this.resource][role][action] || !this.config["resources"][this.resource][role][action]["action"]) {
-                return false;
+                return undefined;
             }
+
             var policy = this.config["resources"][this.resource][role][action]["action"];
             return policy;
         }
