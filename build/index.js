@@ -53579,7 +53579,7 @@ var Factory = function () {
             }
 
             var lastEntry = props[props.length - 1];
-            if (lastEntry && lastEntry.prop !== this.tabDelimiter && hasTabs) {
+            if (lastEntry && lastEntry.prop && lastEntry.prop !== this.tabDelimiter && hasTabs) {
                 count++;
             }
 
