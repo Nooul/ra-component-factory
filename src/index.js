@@ -69,56 +69,56 @@ export default class Factory {
     }
 
 
-    createShowButton(width) {
+    createShowButton(basePath,width) {
         let action = "show";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let showPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (showPolicy) {
-            return (<ShowButton translate={true}/>);
+            return (<ShowButton basePath={basePath} translate={true}/>);
         }
         else {
             return '';
         }
     }
 
-    createEditButton(width) {
+    createEditButton(basePath, width) {
         let action = "edit";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let editPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (editPolicy) {
-            return (<EditButton translate={true}/>);
+            return (<EditButton basePath={basePath} translate={true}/>);
         }
         else {
             return '';
         }
     }
 
-    createDeleteButton(width) {
+    createDeleteButton(basePath, width) {
         let action = "delete";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let deletePolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (deletePolicy) {
-            return (<DeleteButton translate={true}/>);
+            return (<DeleteButton basePath={basePath} translate={true}/>);
         }
         else {
             return '';
         }
     }
 
-    createListButton(width) {
+    createListButton(basePath, width) {
         let action = "list";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let listPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (listPolicy) {
-            return (<ListButton translate={true}/>);
+            return (<ListButton basePath={basePath}  translate={true}/>);
         }
         else {
             return '';

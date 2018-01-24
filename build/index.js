@@ -53437,52 +53437,52 @@ var Factory = function () {
         }
     }, {
         key: 'createShowButton',
-        value: function createShowButton(width) {
+        value: function createShowButton(basePath, width) {
             var action = "show";
             var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var showPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (showPolicy) {
-                return _react2.default.createElement(_adminOnRest.ShowButton, { translate: true });
+                return _react2.default.createElement(_adminOnRest.ShowButton, { basePath: basePath, translate: true });
             } else {
                 return '';
             }
         }
     }, {
         key: 'createEditButton',
-        value: function createEditButton(width) {
+        value: function createEditButton(basePath, width) {
             var action = "edit";
             var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var editPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (editPolicy) {
-                return _react2.default.createElement(_adminOnRest.EditButton, { translate: true });
+                return _react2.default.createElement(_adminOnRest.EditButton, { basePath: basePath, translate: true });
             } else {
                 return '';
             }
         }
     }, {
         key: 'createDeleteButton',
-        value: function createDeleteButton(width) {
+        value: function createDeleteButton(basePath, width) {
             var action = "delete";
             var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var deletePolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (deletePolicy) {
-                return _react2.default.createElement(_adminOnRest.DeleteButton, { translate: true });
+                return _react2.default.createElement(_adminOnRest.DeleteButton, { basePath: basePath, translate: true });
             } else {
                 return '';
             }
         }
     }, {
         key: 'createListButton',
-        value: function createListButton(width) {
+        value: function createListButton(basePath, width) {
             var action = "list";
             var mobileAction = action + (width ? "_mobile" : "");
             var role = localStorage.getItem(this.userRole);
             var listPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
             if (listPolicy) {
-                return _react2.default.createElement(_adminOnRest.ListButton, { translate: true });
+                return _react2.default.createElement(_adminOnRest.ListButton, { basePath: basePath, translate: true });
             } else {
                 return '';
             }
