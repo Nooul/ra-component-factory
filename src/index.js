@@ -6,7 +6,8 @@ import {
     DeleteButton,
     TextInput,
     FormTab,
-    Tab
+    Tab,
+    ListButton
 } from 'admin-on-rest';
 
 export default class Factory {
@@ -104,6 +105,20 @@ export default class Factory {
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (deletePolicy) {
             return (<DeleteButton translate={true}/>);
+        }
+        else {
+            return '';
+        }
+    }
+
+    createListButton(width) {
+        let action = "list";
+        let mobileAction = action + ((width)? "_mobile":"");
+        let role = localStorage.getItem(this.userRole);
+        let listPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
+            this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
+        if (listPolicy) {
+            return (<ListButton translate={true}/>);
         }
         else {
             return '';

@@ -53475,6 +53475,19 @@ var Factory = function () {
             }
         }
     }, {
+        key: 'createListButton',
+        value: function createListButton(width) {
+            var action = "list";
+            var mobileAction = action + (width ? "_mobile" : "");
+            var role = localStorage.getItem(this.userRole);
+            var listPolicy = this.getActionPolicy(role, mobileAction) === undefined ? this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
+            if (listPolicy) {
+                return _react2.default.createElement(_adminOnRest.ListButton, { translate: true });
+            } else {
+                return '';
+            }
+        }
+    }, {
         key: 'canFilter',
         value: function canFilter(width) {
             var action = "filter";
