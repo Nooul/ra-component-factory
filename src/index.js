@@ -69,42 +69,42 @@ export default class Factory {
     }
 
 
-    createShowButton(basePath,width) {
+    createShowButton(basePath, data, width) {
         let action = "show";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let showPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (showPolicy) {
-            return (<ShowButton basePath={basePath} translate={true}/>);
+            return (<ShowButton record={data} basePath={basePath} translate={true}/>);
         }
         else {
             return '';
         }
     }
 
-    createEditButton(basePath, width) {
+    createEditButton(basePath, data, width) {
         let action = "edit";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let editPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (editPolicy) {
-            return (<EditButton basePath={basePath} translate={true}/>);
+            return (<EditButton record={data} basePath={basePath} translate={true}/>);
         }
         else {
             return '';
         }
     }
 
-    createDeleteButton(basePath, width) {
+    createDeleteButton(basePath, data, width) {
         let action = "delete";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let deletePolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (deletePolicy) {
-            return (<DeleteButton basePath={basePath} translate={true}/>);
+            return (<DeleteButton record={data} basePath={basePath} translate={true}/>);
         }
         else {
             return '';
