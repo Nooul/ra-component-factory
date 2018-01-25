@@ -181,29 +181,74 @@ Creation of fields all at once - based on the order of the configuration
     />}
 ```
 
-### Creating Edit/Delete/Create/Show buttons:
+### Rendering Action buttons (Edit/Delete/Create/Show/List) based on roles:
 
-It will return empty for create Button if the user with role1 doesn't have `create { props: [...], action: true }` in the configuration
+createCreateButton(basePath) will return empty for Create Button if the user with role1 doesn't have `create { props: [...], action: true }` in the configuration. We need to provide custom Actions in each of the components Show/Edit/List/Create to control which buttons are rendered based on roles. Note in List we don't need to provide basePath/data in the createXYZButton methods. This information is passed by their parents.
 
 e.g for CreateButton:
 ```jsx
+const ListActions = ({ permissions, resource, filters, displayedFilters, filterValues, basePath, showFilter, refresh }) => (
     <CardActions style={cardActionStyle}>
         {filters && factory.canFilter() && React.cloneElement(filters, { resource, showFilter, displayedFilters, filterValues, context: 'button' }) }
         {factory.createCreateButton(basePath)}
         <FlatButton primary label="refresh" onClick={refresh} icon={<NavigationRefresh />} />
     </CardActions>
-```
+);
 
-e.g in List:
-```jsx
-<List title="All posts" {...props} filters={<PostFilter/>} actions={<Actions />} sort={{field: 'id', order: 'DESC'}} perPage={5}>
-    <Datagrid>
-       {factory.createAll("list"}
-       {factory.createShowButton()}
-       {factory.createEditButton()}
-       {factory.createDeleteButton()}
-    </Datagrid>
-</List>
+const ShowActions = ({ resource, filters, displayedFilters, filterValues, data, basePath, showFilter, refresh }) => (
+    <CardActions style={cardActionStyle}>
+        {factory.createEditButton(basePath, data)}
+        {factory.createListButton(basePath)}
+        {factory.createDeleteButton(basePath, data)}
+        <FlatButton primary label="refresh" onClick={refresh} icon={<NavigationRefresh />} />
+    </CardActions>
+);
+
+const EditActions = ({ resource, filters, displayedFilters, filterValues, basePath, data, showFilter, refresh }) => (
+    <CardActions style={cardActionStyle}>
+        {factory.createShowButton(basePath, data)}w
+        {factory.createListButton(basePath)}
+        {factory.createDeleteButton(basePath, data)}
+        <FlatButton primary label="refresh" onClick={refresh} icon={<NavigationRefresh />} />
+    </CardActions>
+);
+
+
+export const PostList = (props) => (
+    <List title="All posts" {...props} filters={<PostFilter/>} actions={<ListActions />} sort={{field: 'id', order: 'DESC'}} perPage={5}>
+        <Datagrid>
+        {factory.createAll("list")}
+        {factory.createShowButton()}
+        {factory.createEditButton()}
+        {factory.createDeleteButton()}
+        </Datagrid>
+    </List>
+    );
+
+
+export const PostEdit = (props) => (
+    <Edit actions={<EditActions/>}  title={<PostTitle />} {...props}>
+        <SimpleForm redirect={false}>
+            {factory.createAll("edit")}
+        </SimpleForm>
+    </Edit>
+);
+
+export const PostCreate = (props) => (
+    <Create {...props}>
+        <SimpleForm redirect="list">
+            {factory.createAll("create")}
+        </SimpleForm>
+    </Create>
+);
+
+export const PostShow = (props) => (
+    <Show  actions={<ShowActions/>}  {...props}>
+        <SimpleShowLayout>
+            {factory.createAll("show")}
+        </SimpleShowLayout>
+    </Show>
+);
 ```
 
 ### Hide properties
@@ -268,3 +313,21 @@ Similarly for Show:
 </Show>
 ```
 
+Make sure you either have tabs for a specific action (factory call is in `TabbedForm` or `TabbedShowLayout` component) for all roles or you don't 
+
+In case a role doesn't need  Tabs you need to at least have one "dummy/empty title" tab which can be configured like this: 
+
+```
+  role2: {
+      create: {
+         props: ["name",  "author", "date", "-----TAB-----"],
+	 tabs: [""],
+         action: true
+      },
+      [...]
+  },
+```
+
+### Responsive configuration
+
+Coming soon
