@@ -8,7 +8,7 @@ import {
     FormTab,
     Tab,
     ListButton
-} from 'admin-on-rest';
+} from 'react-admin';
 
 export default class Factory {
 
