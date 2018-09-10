@@ -4,7 +4,7 @@
 
 # ra-component-factory (former: aor-component-factory)
 
-react-admin component-factory when used with http://github.com/marmelab/admin-on-rest provides a centralized way to easily configure:
+react-admin component-factory when used with http://github.com/marmelab/react-admin provides a centralized way to easily configure:
 - permissions on action buttons (should a CreateButton be visible ?)
 - permissions on Forms/Actions (should edit form of a resource be accessible to a user?)
 - permissions on Menu Links (should a Menu Link be visible ?)
@@ -45,7 +45,7 @@ import {
      ReferenceInput,
      ReferenceField,
      ChipField
-} from 'admin-on-rest';
+} from 'react-admin';
 
 export default {
     props: {
