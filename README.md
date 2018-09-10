@@ -13,6 +13,13 @@ react-admin component-factory when used with http://github.com/marmelab/react-ad
 - handling of tabbed views/forms
 - (soon) mobile responsive view integration
 
+### Versions
+
+Download version ra-component-factory 0.3.0 for admin-on-rest 1.4.x
+
+Download version ra-component-factory 0.4.0 for react-admin 2.2.x
+
+
 ### Installation:
 
 ```npm install ra-component-factory```
@@ -331,3 +338,8 @@ In case a role doesn't need  Tabs you need to at least have one "dummy/empty tit
 ### Responsive configuration
 
 Coming soon
+
+
+## License
+
+This translation is licensed under the [MIT Licence](LICENSE).

@@ -1,6 +1,6 @@
 {
     "name": "ra-component-factory",
-    "version": "0.2.14",
+    "version": "0.4.0",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
@@ -9,10 +9,10 @@
     "repository": "https://github.com/zifnab87/ra-component-factory.git",
     "private": false,
     "dependencies": {
-        "react": "~16.3.0",
+        "react": "~16.4.2",
         "webpack": "^2.6.1",
-        "react-admin": "^2.0.0-RC4",
-        "react-dom": "~16.3.0"
+        "react-admin": "^2.2.2",
+        "react-dom": "~16.4.2"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,8 +28,8 @@
         "babel-preset-env": "^1.5.1"
     },
     "peerDependencies": {
-        "react-admin": "^2.0.0-RC4",
-        "react": "16.3.0"
+        "react-admin": "^2.2.2",
+        "react": "16.4.2"
     },
     "homepage": "http://github.com/zifnab87/ra-component-factory",
     "license": "MIT"
