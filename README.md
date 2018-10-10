@@ -36,7 +36,7 @@ export default {
 	},
 	roleEntryInLocalStorage: 'user_role',
 	tabDelimiter: '-----TAB-----',
-	editReadOnlyStartsWith: '_'
+	readOnlyPrefix: '_'
 }
 ```
 
@@ -264,7 +264,7 @@ If you want to hide a property of a resource from list for a secific role (e.g r
 
 ### Readonly properties in Edit Mode:
 
-if you want a property to be readonly in Edit Mode you prefix it with "_" or whatever prefix you have configured at `factoryConfig.editReadOnlyStartsWith`
+if you want a property to be readonly in Edit Mode you prefix it with "_" or whatever prefix you have configured at `factoryConfig.readOnlyPrefix`
 
 ### Global Text Search q
 

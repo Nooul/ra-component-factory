@@ -27,11 +27,11 @@ export default class Factory {
         else {
             this.tabDelimiter = config.tabDelimiter;
         }
-        if (!config.editReadOnlyStartsWith) {
-            this.readOnlyInEdit = "_";
+        if (!config.readOnlyPrefix) {
+            this.readOnlyPrefix = "_";
         }
         else {
-            this.readOnlyInEdit = config.editReadOnlyStartsWith;
+            this.readOnlyPrefix = config.readOnlyPrefix;
         }
     }
 
@@ -61,7 +61,7 @@ export default class Factory {
         let role = localStorage.getItem(this.userRole);
         let createPolicy = this.getActionPolicy(role, "create");
         if (createPolicy) {
-            return (<CreateButton basePath={basePath} translate={true}/>);
+            return (<CreateButton basePath={basePath}/>);
         }
         else {
             return '';
@@ -76,7 +76,7 @@ export default class Factory {
         let showPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (showPolicy) {
-            return (<ShowButton record={data} basePath={basePath} translate={true}/>);
+            return (<ShowButton record={data} basePath={basePath}/>);
         }
         else {
             return '';
@@ -90,7 +90,7 @@ export default class Factory {
         let editPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (editPolicy) {
-            return (<EditButton record={data} basePath={basePath} translate={true}/>);
+            return (<EditButton record={data} basePath={basePath}/>);
         }
         else {
             return '';
@@ -104,7 +104,7 @@ export default class Factory {
         let deletePolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (deletePolicy) {
-            return (<DeleteButton record={data} basePath={basePath} translate={true}/>);
+            return (<DeleteButton record={data} basePath={basePath}/>);
         }
         else {
             return '';
@@ -118,7 +118,7 @@ export default class Factory {
         let listPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
         if (listPolicy) {
-            return (<ListButton basePath={basePath}  translate={true}/>);
+            return (<ListButton basePath={basePath}/>);
         }
         else {
             return '';
@@ -217,7 +217,7 @@ export default class Factory {
             for (let prop of props) {
                 let type;
                 if (action.startsWith("edit")) {
-                    if (prop.startsWith(this.readOnlyInEdit)) {
+                    if (prop.startsWith(this.readOnlyPrefix)) {
                       prop = prop.substring(1);
                       type = "field";
                     }
@@ -225,7 +225,16 @@ export default class Factory {
                       type = "input";
                     }
                 }
-                else if (action.startsWith("create") || action.startsWith("filter")) {
+                else if (action.startsWith("create")) {
+                    if (prop.startsWith(this.readOnlyPrefix)) {
+                        prop = prop.substring(1);
+                        type = "field";
+                      }
+                      else {
+                        type = "input";
+                      }
+                }
+                else if (action.startsWith("filter")) {
                     type = "input";
                 }
                 else {
@@ -282,14 +291,14 @@ export default class Factory {
             return 'hidden';
         }
 
-        if(props.indexOf(prop) > -1 && (action.startsWith("filter") || action.startsWith("create"))) {
+        if(props.indexOf(prop) > -1 && (action.startsWith("filter"))) {
             return "input";
         }
-        else if(props.indexOf(prop) > -1 && !action.startsWith("edit")) {
+        else if(props.indexOf(prop) > -1 && !action.startsWith("edit") && !action.startsWith("create")) {
             return "field";
         }
-        else if (action.startsWith("edit")) {
-            if (props.indexOf(this.readOnlyInEdit + prop) > -1) {
+        else if (action.startsWith("edit") || action.startsWith("create")) {
+            if (props.indexOf(this.readOnlyPrefix + prop) > -1) {
               return "field";
             }
             else if(props.indexOf(prop) > -1) {

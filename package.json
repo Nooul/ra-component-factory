@@ -1,6 +1,6 @@
 {
     "name": "ra-component-factory",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
@@ -11,7 +11,7 @@
     "dependencies": {
         "react": "~16.4.2",
         "webpack": "^2.6.1",
-        "react-admin": "^2.2.2",
+        "react-admin": "^2.3.3",
         "react-dom": "~16.4.2"
     },
     "scripts": {
@@ -28,7 +28,7 @@
         "babel-preset-env": "^1.5.1"
     },
     "peerDependencies": {
-        "react-admin": "^2.2.2",
+        "react-admin": "^2.3.3",
         "react": "16.4.2"
     },
     "homepage": "http://github.com/zifnab87/ra-component-factory",
