@@ -100,6 +100,7 @@ export default class Factory {
     }
 
     showFilters() {
+        let role = localStorage.getItem(this.userRole);
         let filterPolicy = this.getActionPolicy(role, "filter");
         return filterPolicy;
     }
