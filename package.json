@@ -1,36 +1,37 @@
 {
-    "name": "ra-component-factory",
-    "version": "0.5.0",
-    "author": {
-        "name": "Michail Michailidis",
-        "email": "mmichaelid@gmail.com"
-    },
-    "main": "./build/index.js",
-    "repository": "https://github.com/zifnab87/ra-component-factory.git",
-    "private": false,
-    "dependencies": {
-        "react": "^16.7.0",
-        "webpack": "^4.29.0",
-        "react-admin": "^2.6.2",
-        "react-dom": "^16.7.0"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack --watch",
-        "build": "webpack"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.24.1",
-        "babel-core": "^6.24.1",
-        "babel-loader": "^7.0.0",
-        "babel-plugin-transform-object-rest-spread": "^6.23.0",
-        "babel-plugin-transform-react-jsx": "^6.24.1",
-        "babel-preset-env": "^1.5.1"
-    },
-    "peerDependencies": {
-        "react-admin": "^2.6.2",
-        "react": "^16.7.0"
-    },
-    "homepage": "http://github.com/zifnab87/ra-component-factory",
-    "license": "MIT"
+  "name": "ra-component-factory",
+  "version": "0.5.1",
+  "author": {
+    "name": "Michail Michailidis",
+    "email": "mmichaelid@gmail.com"
+  },
+  "main": "./build/index.js",
+  "repository": "https://github.com/zifnab87/ra-component-factory.git",
+  "private": false,
+  "dependencies": {
+    "react": "^16.7.0",
+    "webpack": "2.6.1",
+    "react-admin": "^2.6.2",
+    "react-dom": "^16.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "webpack-cli": "^3.2.1"
+  },
+  "peerDependencies": {
+    "react-admin": "^2.6.2",
+    "react": "^16.7.0"
+  },
+  "homepage": "http://github.com/zifnab87/ra-component-factory",
+  "license": "MIT"
 }

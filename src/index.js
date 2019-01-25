@@ -52,7 +52,7 @@ export default class Factory {
         return component;
     }
 
-    showCreateBUtton() {
+    showCreateButton() {
         let role = localStorage.getItem(this.userRole);
         let createPolicy = this.getActionPolicy(role, "create");
         return createPolicy;
