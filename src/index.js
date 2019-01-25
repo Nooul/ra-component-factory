@@ -1,13 +1,8 @@
 import React from 'react';
 import {
-    ShowButton,
-    CreateButton,
-    EditButton,
-    DeleteButton,
     TextInput,
     FormTab,
-    Tab,
-    ListButton
+    Tab
 } from 'react-admin';
 
 export default class Factory {
@@ -57,73 +52,54 @@ export default class Factory {
         return component;
     }
 
-    createCreateButton(basePath) {
+    showCreateBUtton() {
         let role = localStorage.getItem(this.userRole);
         let createPolicy = this.getActionPolicy(role, "create");
-        if (createPolicy) {
-            return (<CreateButton basePath={basePath}/>);
-        }
-        else {
-            return '';
-        }
+        return createPolicy;
     }
 
 
-    createShowButton(basePath, data, width) {
+    showShowButton() { 
         let action = "show";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let showPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
-        if (showPolicy) {
-            return (<ShowButton record={data} basePath={basePath}/>);
-        }
-        else {
-            return '';
-        }
+        return showPolicy;
     }
 
-    createEditButton(basePath, data, width) {
+    showEditButton() {
         let action = "edit";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let editPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
-        if (editPolicy) {
-            return (<EditButton record={data} basePath={basePath}/>);
-        }
-        else {
-            return '';
-        }
+        return editPolicy;
     }
 
-    createDeleteButton(basePath, data, width) {
+    showDeleteButton() {
         let action = "delete";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let deletePolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
-        if (deletePolicy) {
-            return (<DeleteButton record={data} basePath={basePath}/>);
-        }
-        else {
-            return '';
-        }
+        return deletePolicy;
     }
 
-    createListButton(basePath, width) {
+    showExportButton() {
+        return this.showListButton();
+    }
+
+    showListButton() {
         let action = "list";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
         let listPolicy = (this.getActionPolicy(role, mobileAction) === undefined) ?
             this.getActionPolicy(role, action) : this.getActionPolicy(role, mobileAction);
-        if (listPolicy) {
-            return (<ListButton basePath={basePath}/>);
-        }
-        else {
-            return '';
-        }
+        return listPolicy;
     }
+
+
 
     canFilter(width) {
         let action = "filter";
