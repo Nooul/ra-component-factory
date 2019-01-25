@@ -90,7 +90,7 @@ export default class Factory {
         return this.showListButton(width);
     }
 
-    showListButton() {
+    showListButton(width) {
         let action = "list";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
