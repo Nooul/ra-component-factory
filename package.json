@@ -1,6 +1,6 @@
 {
     "name": "ra-component-factory",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
@@ -28,8 +28,8 @@
         "babel-preset-env": "^1.5.1"
     },
     "peerDependencies": {
-        "react-admin": "^2.3.3",
-        "react": "16.4.2"
+        "react-admin": "^2.6.2",
+        "react": "^16.7.0"
     },
     "homepage": "http://github.com/zifnab87/ra-component-factory",
     "license": "MIT"
