@@ -99,6 +99,11 @@ export default class Factory {
         return listPolicy;
     }
 
+    showFilters() {
+        let filterPolicy = this.getActionPolicy(role, "filter");
+        return filterPolicy;
+    }
+
 
 
     canFilter(width) {
