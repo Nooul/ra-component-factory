@@ -1,6 +1,6 @@
 {
     "name": "ra-component-factory",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "author": {
         "name": "Michail Michailidis",
         "email": "mmichaelid@gmail.com"
@@ -9,10 +9,10 @@
     "repository": "https://github.com/zifnab87/ra-component-factory.git",
     "private": false,
     "dependencies": {
-        "react": "~16.4.2",
-        "webpack": "^2.6.1",
-        "react-admin": "^2.3.3",
-        "react-dom": "~16.4.2"
+        "react": "^16.7.0",
+        "webpack": "^4.29.0",
+        "react-admin": "^2.6.2",
+        "react-dom": "^16.7.0"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
