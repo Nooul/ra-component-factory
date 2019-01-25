@@ -59,7 +59,7 @@ export default class Factory {
     }
 
 
-    showShowButton() { 
+    showShowButton(width) { 
         let action = "show";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
@@ -68,7 +68,7 @@ export default class Factory {
         return showPolicy;
     }
 
-    showEditButton() {
+    showEditButton(width) {
         let action = "edit";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
@@ -77,7 +77,7 @@ export default class Factory {
         return editPolicy;
     }
 
-    showDeleteButton() {
+    showDeleteButton(width) {
         let action = "delete";
         let mobileAction = action + ((width)? "_mobile":"");
         let role = localStorage.getItem(this.userRole);
@@ -86,8 +86,8 @@ export default class Factory {
         return deletePolicy;
     }
 
-    showExportButton() {
-        return this.showListButton();
+    showExportButton(width) {
+        return this.showListButton(width);
     }
 
     showListButton() {
