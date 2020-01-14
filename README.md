@@ -19,6 +19,8 @@ Download version ra-component-factory 0.3.0 for admin-on-rest 1.4.x
 
 Download version ra-component-factory 0.4.0 for react-admin 2.2.x
 
+Download version ra-component-factory 0.6.x for react-admin 3.x.x
+
 
 ### Installation:
 
